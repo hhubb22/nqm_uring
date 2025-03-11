@@ -1,0 +1,17 @@
+# NQM instances
+instances:
+  - name: "instance1"
+    interval: 1000  # milliseconds
+    dst_ip: "192.168.1.1"
+    
+  - name: "instance2"
+    interval: 2000  # milliseconds
+    dst_ip: "10.0.0.1"
+    
+  - name: "instance3"
+    interval: 500   # milliseconds
+    dst_ip: "8.8.8.8"
+    
+  - name: "instance4"
+    interval: 1500  # milliseconds
+    dst_ip: "172.16.0.1"
