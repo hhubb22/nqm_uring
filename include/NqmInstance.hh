@@ -68,4 +68,10 @@ private:
 
   /** @brief 监控数据包的目标IP地址 */
   std::string dst_ip_;
+
+  /** @brief 监控数据包的内容，使用std::byte表示 */
+  std::byte data_;
+
+  /** @brief 用户自定义的数据，使用std::byte表示 */
+  std::byte user_data_;
 };
