@@ -1,22 +1,20 @@
 cmake_minimum_required(VERSION 3.19)
 
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
-set(VCPKG_MANIFEST_MODE ON) 
-message(STATUS "Using vcpkg toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(NqmUring)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include_directories(include)
 
 find_package(fmt CONFIG REQUIRED)
-find_package(yaml-cpp CONFIG REQUIRED)
-
-include_directories(include)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
 
 add_library(NqmUring src/NqmConfigParser.cc src/NqmInstance.cc)
 
-target_link_libraries(NqmUring fmt::fmt yaml-cpp::yaml-cpp)
+target_link_libraries(NqmUring fmt::fmt PkgConfig::tomlplusplus)
 
 add_executable(nqm src/main.cc)
 target_link_libraries(nqm NqmUring)

@@ -1,6 +1,5 @@
 #pragma once
 #include <NqmInstance.hh>
-#include <yaml-cpp/yaml.h>
 
 class NqmConfigParser {
 public:
@@ -12,6 +11,4 @@ public:
 
 private:
   std::string configFilePath_;
-  YAML::Node::iterator iter_;
-  YAML::Node config_;
 };
